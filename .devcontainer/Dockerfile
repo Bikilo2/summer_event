@@ -7,6 +7,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+
 # Notwendige Pakete installieren
 RUN apt-get update && apt-get install -y \
     locales \
@@ -39,6 +40,7 @@ RUN apt-get update && apt-get install -y \
     screen \
     sudo \
     bash \
+    openssh-server \
     && rm -rf /var/lib/apt/lists/*
 
 # Locale generieren
@@ -58,6 +60,7 @@ RUN useradd -m yocto \
     && echo 'yocto:yocto' | chpasswd \
     && adduser yocto sudo
 
+RUN echo "source /opt/yocto/poky/oe-init-build-env /workspaces/summer_event/build/" >> /etc/bash.bashrc 
 # Arbeitsverzeichnis ändern und Benutzer wechseln
 WORKDIR /home/yocto
 USER yocto
