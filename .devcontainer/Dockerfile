@@ -60,10 +60,10 @@ RUN useradd -m yocto \
     && echo 'yocto:yocto' | chpasswd \
     && adduser yocto sudo
 
-RUN echo "source /opt/yocto/poky/oe-init-build-env /workspaces/summer_event/build/" >> /etc/bash.bashrc 
+RUN echo "source /opt/yocto/poky/oe-init-build-env ~/workspaces/summer_event/build/" >> /etc/bash.bashrc 
 # Arbeitsverzeichnis ändern und Benutzer wechseln
 WORKDIR /home/yocto
 USER yocto
-
+RUN mkdir -p /home/yocto/workspaces/summer_event
 # Befehl zum Erstellen des Images entfernen und bash als Standardbefehl setzen
 CMD ["/bin/bash"]
