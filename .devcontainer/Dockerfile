@@ -77,7 +77,7 @@ RUN mkdir -p ~/workspaces/summer_event
 
 RUN source /opt/yocto/poky/oe-init-build-env ~/workspaces/summer_event/build/ \
     && mv ~/workspaces/summer_event/build/conf/bblayers.conf /tmp/bblayers.conf \
-    && mv ~/workspaces/summer_event/build/conf/local.conf /tmp/local.conf \
+    && cp ~/workspaces/summer_event/build/conf/local.conf /tmp/local.conf \
     && echo '# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf' > ~/workspaces/summer_event/build/conf/bblayers.conf \
     && echo '# changes incompatibly' >> ~/workspaces/summer_event/build/conf/bblayers.conf \
     && echo 'POKY_BBLAYERS_CONF_VERSION = "2"' >> ~/workspaces/summer_event/build/conf/bblayers.conf \
