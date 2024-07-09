@@ -52,9 +52,9 @@ RUN locale-gen en_US.UTF-8
 WORKDIR /opt/yocto
 
 # Yocto-Projekt herunterladen und konfigurieren
-RUN git clone -b scarthgap git://git.yoctoproject.org/poky.git poky \
+RUN git clone -b scarthgap https://git.yoctoproject.org/git/poky/ poky \
     && cd poky \
-    && git clone -b scarthgap git://git.openembedded.org/meta-openembedded \
+    && git clone -b scarthgap https://github.com/openembedded/meta-openembedded.git \
     && git clone -b scarthgap https://github.com/agherzan/meta-raspberrypi.git
 
 RUN sed -i 's/^status.addresult(check_case_sensitive(tmpdir, "TMPDIR"))/# &/' /opt/yocto/poky/meta/classes-global/sanity.bbclass
